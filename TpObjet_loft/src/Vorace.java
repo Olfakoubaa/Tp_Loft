@@ -6,7 +6,7 @@ public class Vorace extends Neuneus{
 	}
 	
 	public void se_deplacer(){
-		//récupérer la position , supprimer le neuneu de la case actuelle
+		//récupérer la position 
 		Case c= loft.cases[x][y];		
 		loft.placer_neuneu(this);
 		manger();

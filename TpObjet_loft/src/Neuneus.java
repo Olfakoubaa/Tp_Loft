@@ -1,30 +1,46 @@
+import java.util.ArrayList;
 
-public class Neuneus {
+public abstract class Neuneus {
 	
-	//l'énergie nécessaire au croisement
-	final int min_energie=20;
-	//l'énergie minimal pour vivre
-	final int energie_vie=2;
-	float energie;
-	int x,y;
+	int energie;
+	Case pos;
 	String nom;
 	Loft loft;
+	//liste de nourriture favoris
+	ArrayList <String>liste_nou=new ArrayList <String>();
 	
-	void se_deplacer(){	
-	}
-	void manger(){
-	}
-	
+	abstract void se_deplacer();
+	abstract void manger();
+	abstract Neuneus reproduction(Neuneus n);
+		
 	Neuneus(){
 	}
 	
-	Neuneus(String n,int x, int y,Loft l){
-		this.nom=n;
-		this.x=x;
-		this.y=y;
-		this.energie=0;
-		this.loft=l;
+	ArrayList<String> get_liste_nou(){
+		return liste_nou;
 	}
 	
+	public Case deplacement(Case c, int x, int y){
+		 ArrayList<Case> directions = new ArrayList<Case>();
+	      
+	        if ((this.pos.case_gauche() != null && x<0) ||
+	                (c==null && this.pos.case_gauche() != null)){
+	            directions.add(this.pos.case_gauche());
+	        }
+	        if ((this.pos.case_haut()!= null && y<0) || 
+	                (c==null && this.pos.case_haut() != null)){
+	            directions.add(this.pos.case_haut());
+	        }
+	        if ((this.pos.case_droite()!= null && x>0) || 
+	                (c==null && this.pos.case_droite() != null)){
+	            directions.add(this.pos.case_droite());
+	        }
+	        if ((this.pos.case_bas()!= null && y>0) || 
+	                (c==null && this.pos.case_bas() != null)){
+	            directions.add(this.pos.case_bas());
+	        }
+	        return (directions.size()==0? null : directions.get((int)(Math.random() * directions.size())));
+	    }
+	 
 	
 }
