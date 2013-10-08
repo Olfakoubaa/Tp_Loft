@@ -1,13 +1,23 @@
 
 public class Cannibales extends Neuneus{
 
-	Cannibales(String n,int x, int y,Loft l) {
-		super(n, x, y, l);
-	}
-	public void manger(){
+	@Override
+	void se_deplacer() {
+		// TODO Auto-generated method stub
 		
 	}
-	public void se_deplacer(){
+
+	@Override
+	void manger() {
+		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	Neuneus reproduction(Neuneus n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

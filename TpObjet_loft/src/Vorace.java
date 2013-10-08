@@ -1,19 +1,23 @@
 
 public class Vorace extends Neuneus{
 
-	Vorace(String n,int x, int y,Loft l) {
-		super(n, x, y, l);
-	}
-	
-	public void se_deplacer(){
-		//récupérer la position 
-		Case c= loft.cases[x][y];		
-		loft.placer_neuneu(this);
-		manger();
-	}
-	
-	public void manger(){
+	@Override
+	void se_deplacer() {
+		// TODO Auto-generated method stub
 		
-	
 	}
+
+	@Override
+	void manger() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	Neuneus reproduction(Neuneus n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

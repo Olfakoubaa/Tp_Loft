@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Case {
 
 	int abs;
@@ -25,6 +26,28 @@ public class Case {
         return loft;
     }
 	
+    
+    public String toString(){
+        String ch;
+        ch="la case"+abs+" "+ord+",";
+        if (stock.size()==-1 && habitant.size()==-1)
+        	ch+=" vide ";
+        else ch+="contient :";
+       
+        int i=0;
+        while (i<stock.size()){
+        	ch+=stock.get(i).toString();
+        	i++;
+        }
+        int j=0;
+        while (j<habitant.size()){
+        	ch+=habitant.get(j).toString();
+        	j++;
+        }
+        return ch;
+    }
+    
+    
     //chercher la case a gauche de la case courante
 	public Case case_gauche(){
 		
@@ -101,7 +124,7 @@ public class Case {
 	}
 	
 	
-	//tester si les aliments contenus dans une case sont mangeables pas le neuneu 
+	//tester si les aliments stocks dans une case sont mangeables pas le neuneu 
 	public boolean test_aliment(Neuneus n){
 		
 		boolean test=false;
@@ -115,4 +138,15 @@ public class Case {
 		return test;
 	}
 	
+	//donner la case la plus proche contient la nourriture du neuneu en cours _pour les 
+	
+	public Case proche(Neuneus n){
+		Case c=null;
+		return c;
+	}
+	
+	//donner le si la case contien un neuneu de mme type
+
+	
+	//donner la case la plus proche qui contient un neuneu
 }
