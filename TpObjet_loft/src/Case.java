@@ -14,34 +14,22 @@ public class Case {
 		this.ord=o;
 		this.loft=l;
 	}
-
-	public ArrayList<Nourriture> getStock() {
-        return this.stock;
-    }
-    public ArrayList<Neuneus> getHabitant() {
-        return habitant;
-    }  
-    public Loft getLoft() {
-        return loft;
-    }
-	
-    
+   
     public String toString(){
-        String ch;
-        ch="la case"+abs+" "+ord+",";
-        if (stock.size()==-1 && habitant.size()==-1)
+        String ch=null;
+        ch="la case "+abs+" "+ord+",";
+        
+        if (stock.size()==0 && habitant.size()==0)
         	ch+=" vide ";
-        else ch+="contient :";
+        else{
+        	ch+=" contient :";       
+        	for(int i=0;i<stock.size();i++){
+        		ch+=stock.get(i).toString();
+        	}
        
-        int i=0;
-        while (i<stock.size()){
-        	ch+=stock.get(i).toString();
-        	i++;
-        }
-        int j=0;
-        while (j<habitant.size()){
-        	ch+=habitant.get(j).toString();
-        	j++;
+        	for(int j=0;j<habitant.size();j++){
+        		ch+=habitant.get(j).toString();       
+        	}
         }
         return ch;
     }
@@ -51,7 +39,7 @@ public class Case {
 	public Case case_gauche(){
 		
 		Case c=null;
-		ArrayList <Case> cases=loft.get_cases();	
+		ArrayList <Case> cases=loft.cases;	
 			int i=0;
 			boolean t=false;
 			while (i< cases.size() && !t){
@@ -69,7 +57,7 @@ public class Case {
 	public Case case_droite(){
 		Case c=null;
 		
-		ArrayList <Case> cases=loft.get_cases();	
+		ArrayList <Case> cases=loft.cases;	
 			int i=0;
 			boolean t=false;
 			while (i< cases.size() && !t){
@@ -86,7 +74,7 @@ public class Case {
 	public Case case_bas(){
 		Case c=null;
 		
-		ArrayList <Case> cases=loft.get_cases();	
+		ArrayList <Case> cases=loft.cases;	
 			int i=0;
 			boolean t=false;
 			while (i< cases.size() && !t){
@@ -103,7 +91,7 @@ public class Case {
 	public Case case_haut(){
 		Case c=null;
 		
-		ArrayList <Case> cases=loft.get_cases();	
+		ArrayList <Case> cases=loft.cases;	
 			int i=0;
 			boolean t=false;
 			while (i< cases.size() && !t){

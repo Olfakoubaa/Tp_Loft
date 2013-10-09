@@ -6,8 +6,11 @@ public class Erratique extends Neuneus{
 
 	
 	public Erratique(String n, int e, Case c){
-		super();
+		super(n,e,c);
 		init_nou();
+	}
+	public Erratique(String n,int e){
+		super(n,e);
 	}
 	
 	public void init_nou(){
@@ -20,7 +23,7 @@ public class Erratique extends Neuneus{
 	// errer au hazard
 	void se_deplacer() {
 		// TODO Auto-generated method stub
-	
+		
 		//void toutes les direction accessibles
         ArrayList<Case> directions = new ArrayList<Case>();
         if (this.pos.case_gauche() != null){
@@ -45,6 +48,7 @@ public class Erratique extends Neuneus{
         this.pos = c;
         //deplacer le neuneu
         c.habitant.add(this);
+        
         //se reproduire ou manger
         
         //si'il ya un neuneu de meme type=> reproduction
@@ -80,4 +84,5 @@ public class Erratique extends Neuneus{
 		Neuneus neu=new Erratique("Erratique",0,this.pos);
 		return neu;
 	}
+	
 }

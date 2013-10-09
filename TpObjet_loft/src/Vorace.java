@@ -2,8 +2,11 @@
 public class Vorace extends Neuneus{
 
 	public Vorace(String n, int e, Case c){
-		super();
+		super(n,e,c);
 		init_nou();
+	}
+	public Vorace (String n, int e){
+		super(n,e);
 	}
 	
 	public void init_nou(){
@@ -17,7 +20,7 @@ public class Vorace extends Neuneus{
 		// TODO Auto-generated method stub
 		 
 		//choix de la position
-		
+		/*
 		 //supprimer le neuneu de la case actuelle
         this.pos.habitant.remove(this);
         //modifier sa position
@@ -36,7 +39,7 @@ public class Vorace extends Neuneus{
         //si la case contient les aliments préférés par el neuenu
         else if(c.test_aliment(this)){
             this.manger();
-        }  
+        }  */
 	}
 
 	@Override
@@ -60,6 +63,5 @@ public class Vorace extends Neuneus{
 		Neuneus neu=new Vorace("Vorace",0,this.pos);
 		return neu;
 	}
-
 	
 }

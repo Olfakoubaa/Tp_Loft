@@ -3,21 +3,25 @@ public class Population {
 
 	private int taille;
 	
-	Population(int n){
-		this.taille=n;
+	Population(){
+		this.taille=0;
 	}
 	
-	public void augmenter(int i){
-		this .taille = taille-i;
+	public void augmenter(){
+		this .taille +=1;
 	}
 	
-	public void diminuer(int i){
+	public void diminuer(){
 		
-		this.taille=taille-i;
+		this.taille-=1;
 	}
 	
 	int get_taille(){
 		return taille;
 	}
 	
+	public String toString(){
+		String ch= " Taille de population ="+taille;
+		return ch;
+	}
 }

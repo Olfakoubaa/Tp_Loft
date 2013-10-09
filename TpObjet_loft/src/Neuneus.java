@@ -10,21 +10,30 @@ public abstract class Neuneus {
 	
 	//liste de nourriture favoris
 	ArrayList <String>liste_nou=new ArrayList <String>();
-	//population
-	int population=0;
 	
+public void affiche(){
+		
+		System.out.println(this.nom+" en position: "+this.pos.abs+" "+this.pos.ord);
+		
+	}
 	abstract void se_deplacer();
 	abstract void manger();
 	abstract Neuneus reproduction(Neuneus n);
+	
+	
+	//constructeurs pour les neuneus qui seront placés aléatoirement
+	public Neuneus(String n, int e){
+		this.nom=n;
+		this.energie=e;
 		
-	Neuneus(){
 	}
+	
+	//constructeur pour les neuneus dont on peut choisir les places
 	public Neuneus(String n, int e, Case c){
 		this.nom=n;
 		this.pos=c;
 		this.energie=e;
-		this.population+=1;
-		System.out.println("taille population:"+population);
+		
 	}
 	
 	ArrayList<String> get_liste_nou(){
@@ -33,7 +42,7 @@ public abstract class Neuneus {
 	
 	public String toString(){
 		String ch;
-		ch= " ("+nom+","+energie+") ";
+		ch= " ("+this.nom+","+this.energie+") ";
 		return ch;
 	}
 	
