@@ -1,8 +1,7 @@
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 public class Case {
-
 	int abs;
 	int ord;
 	Loft loft;
@@ -130,7 +129,7 @@ public class Case {
 		boolean test=false;
 		int j=0;
 		while (j<stock.size()&&!test){
-			if(n.get_liste_nou().indexOf(stock.get(j).nom)!=0){
+			if(n.liste_nou.indexOf(stock.get(j).nom)!=0){
 				test=true;
 			}
 			else j++;
@@ -147,6 +146,48 @@ public class Case {
 	
 	//donner le si la case contien un neuneu de mme type
 
+	 public Neuneus autre_neuneu (Neuneus n){
+	        Neuneus n2 = null;
+	        int i=0;
+	        while (i<habitant.size()&& n2==null){
+	            if(! habitant.get(i).equals(n)){
+	               n2=habitant.get(i);
+	            }
+	            i++;
+	        }
+	        return n2;
+	    }
 	
+	/***/ 
+	/* public Case proche_nourriture(Neuneus neuneu){
+	        HashMap<Case, Integer> possible = new HashMap<Case, Integer>();
+	        for(Case aCase : this.loft.getMap()){
+	            if(aCase.hasAliment(neuneu)){
+	                possible.put(aCase, Math.abs(aCase.abs - this.abs) + Math.abs(aCase.ord - this.ord));
+	            }
+	        }
+	        Case ret = null;
+	        int distance=10000;
+	        for(Case aCase : possible.keySet()){
+	            if(possible.get(aCase)<distance){
+	                ret = aCase;
+	                distance = possible.get(aCase);
+	            }
+	        }
+	        return ret;
+	    }*/
+	 /****/
+	 
+	 
 	//donner la case la plus proche qui contient un neuneu
+	 
+	 
+	 
+	 
+	 
 }
+
+
+
+
+

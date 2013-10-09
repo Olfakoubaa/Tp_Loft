@@ -2,10 +2,12 @@ import java.util.ArrayList;
 
 public abstract class Neuneus {
 	
+	public final int min_en_prod= 20;
 	int energie;
 	Case pos;
 	String nom;
 	Loft loft;
+	
 	//liste de nourriture favoris
 	ArrayList <String>liste_nou=new ArrayList <String>();
 	//population
@@ -34,8 +36,13 @@ public abstract class Neuneus {
 		ch= " ("+nom+","+energie+") ";
 		return ch;
 	}
+	
+	/*
+	
 	public Case deplacement(Case c, int x, int y){
-		 ArrayList<Case> directions = new ArrayList<Case>();
+		
+			//on prend d'abord toutes les directions acceccibles
+			ArrayList<Case> directions = new ArrayList<Case>();
 	      
 	        if ((this.pos.case_gauche() != null && x<0) ||
 	                (c==null && this.pos.case_gauche() != null)){
@@ -55,10 +62,6 @@ public abstract class Neuneus {
 	        }
 	        return (directions.size()==0? null : directions.get((int)(Math.random() * directions.size())));
 	    }
-	void setNourriture() {
-		// TODO Auto-generated method stub
-		
-	}
-	 
-	
+		 
+	*/
 }
