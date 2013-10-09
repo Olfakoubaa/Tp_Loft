@@ -22,12 +22,14 @@ public class Case {
         
         if (stock.size()==0 && habitant.size()==0)
         	ch+=" vide ";
+        
         else{
-        	ch+=" contient :";       
+        	ch+=" contient :"; 
+        	if (stock.size()!=0 )
         	for(int i=0;i<stock.size();i++){
         		ch+=stock.get(i).toString();
         	}
-       
+        	if(habitant.size()!=0)
         	for(int j=0;j<habitant.size();j++){
         		ch+=habitant.get(j).toString();       
         	}
@@ -112,6 +114,7 @@ public class Case {
 	}
 	
 	
+	
 	//tester si les aliments stocks dans une case sont mangeables pas le neuneu 
 	public boolean test_aliment(Neuneus n){
 		
@@ -154,7 +157,7 @@ public class Case {
 	            }
 	        }
 	        Case decision = null;
-	        int min =distance.get(0);
+	        int min =999;
 	        //recherche min 
 	        for (int i=0;i<position.size();i++){
 	        	int d= distance.get(i);
@@ -184,7 +187,7 @@ public class Case {
 	            }
 	        }
 	        Case decision = null;
-	        int min =distance.get(0);
+	        int min =999;
 	        //recherche min 
 	        for (int i=0;i<position.size();i++){
 	        	int d= distance.get(i);
@@ -195,7 +198,6 @@ public class Case {
 	        }
 	        return decision ;
 	    }
-	 
 }
 
 

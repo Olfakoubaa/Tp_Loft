@@ -4,10 +4,9 @@ public class Cannibales extends Neuneus{
 	
 	Cannibales ( String n,int e, Case c){
 		super(n,e,c);
+		init_nou();
 	}
-	Cannibales ( String n,int e){
-		super(n,e);
-	}
+	
 	
 	public void init_nou(){
 		this.liste_nou.add("Alcool");
@@ -46,6 +45,7 @@ public class Cannibales extends Neuneus{
 	            this.pos = randomDir;
 	            //deplacer le neuneu
 	            randomDir.habitant.add(this);
+	            System.out.println(this.nom+" s'est déplacé");
 	        }
 	        
 	        //le neuneu se reproduit si son energie le permet et il trouve un partenaire sur la case 

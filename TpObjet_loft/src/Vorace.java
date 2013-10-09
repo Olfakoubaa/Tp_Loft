@@ -5,10 +5,7 @@ public class Vorace extends Neuneus{
 		super(n,e,c);
 		init_nou();
 	}
-	public Vorace (String n, int e){
-		super(n,e);
-	}
-	
+
 	public void init_nou(){
 		this.liste_nou.add("Alcool");
 		this.liste_nou.add("Poisson");
@@ -18,7 +15,7 @@ public class Vorace extends Neuneus{
 	@Override
 	void se_deplacer() {
 		// TODO Auto-generated method stub
-		 		
+		 	
         Case c = this.pos._nourriture(this);
         
         int X = 0;
@@ -35,19 +32,21 @@ public class Vorace extends Neuneus{
             }
             this.pos.habitant.remove(this);
             randomDir.habitant.add(this);
+           
+            System.out.println(this.nom+" s'est déplacé");
             this.pos = randomDir;
             
+            //manger ou se reproduire
+            if(this.energie >= min_en_prod && this.pos.habitant.size()>1){
+            	Neuneus n= reproduction(this.pos.autre_neuneu(this));
+                pos.loft.ajout_neuneu(n);
+                
+            }
+            else if(c.test_aliment(this)){
+                this.manger();
+            }
         }
         
-        //reproduction
-        if((this.energie >= min_en_prod)&&(this.pos.habitant.size()>1))   {	
-        	Neuneus n= reproduction(this.pos.autre_neuneu(this));
-            pos.loft.ajout_neuneu(n);
-        }
-        //si la case contient les aliments préférés par el neuenu
-        else if(c.test_aliment(this)){
-            this.manger();
-        }  
 	}
 	
 }

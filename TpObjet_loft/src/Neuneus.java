@@ -9,25 +9,29 @@ public abstract class Neuneus {
 	String nom;
 	Loft loft;
 	
+	
+	//constructeur pour les neuneus dont on peut choisir les places
+	public Neuneus(String n, int e, Case c){
+		this.nom=n;
+		this.pos=c;
+		this.energie=e;
+		
+	}
+	
 	//liste de nourriture favoris
 	ArrayList <String>liste_nou=new ArrayList <String>();
 	
-public void affiche(){
-		
-		System.out.println(this.nom+" en position: "+this.pos.abs+" "+this.pos.ord);
-		
-	}
 	abstract void se_deplacer();
 	
 	public void manger(){
 			int i=0;
-			//while (i<this.pos.stock.size()){
+			while (i<this.pos.stock.size()){
 				if (this.liste_nou.indexOf(this.pos.stock.get(i))!=0){
 					energie+=this.pos.stock.get(i).val_energitique;
 					this.pos.stock.remove(i);
 			}	
 					else i++;
-			//}
+			}
 		
 	}
 	
@@ -38,25 +42,6 @@ public void affiche(){
 		return neu;
 	}
 	
-	
-	//constructeurs pour les neuneus qui seront placés aléatoirement
-	public Neuneus(String n, int e){
-		this.nom=n;
-		this.energie=e;
-		
-	}
-	
-	//constructeur pour les neuneus dont on peut choisir les places
-	public Neuneus(String n, int e, Case c){
-		this.nom=n;
-		this.pos=c;
-		this.energie=e;
-		
-	}
-	
-	ArrayList<String> get_liste_nou(){
-		return liste_nou;
-	}
 	
 	public String toString(){
 		String ch;
@@ -69,7 +54,7 @@ public void affiche(){
 	public Case deplacement(Case c, int x, int y){
 		
 			Case _c=null;
-			//on prend  toutes les directions acceccibles
+			
 			ArrayList<Case> directions = new ArrayList<Case>();
 	      
 	        if ((this.pos.case_gauche() != null && x<0) ||
@@ -96,6 +81,5 @@ public void affiche(){
 	        }
 	        return _c;
 	    }
-		 
 	
 }

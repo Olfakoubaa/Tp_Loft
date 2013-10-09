@@ -1,7 +1,7 @@
 
 public class Population {
 
-	private int taille;
+	public int taille;
 	
 	Population(){
 		this.taille=0;
@@ -16,12 +16,9 @@ public class Population {
 		this.taille-=1;
 	}
 	
-	int get_taille(){
-		return taille;
-	}
-	
 	public String toString(){
-		String ch= " Taille de population ="+taille;
+		String ch=""+this.taille;
 		return ch;
 	}
+	
 }

@@ -5,10 +5,8 @@ public class Lapin extends Neuneus {
 		super(n,e,c);
 		init_nou();
 	}
-	Lapin( String n,int e){
-		super(n,e);
-	}
 	
+	//liste de nourriture préféré par les lapins
 	public void init_nou(){
 		this.liste_nou.add("alcool");
 		this.liste_nou.add("carottes");
@@ -17,7 +15,7 @@ public class Lapin extends Neuneus {
 	@Override
 	void se_deplacer() {
 		// TODO Auto-generated method stub
-				
+	
         Case c = this.pos._neuneu(this);
         int X = 0;
         int Y = 0;
@@ -32,18 +30,18 @@ public class Lapin extends Neuneus {
             randomDir = this.pos;
         }
         this.pos.habitant.remove(this);
+        System.out.println(this.nom+" s'est déplacé");
         randomDir.habitant.add(this);
         this.pos = randomDir;
-        this.energie-=10;
-        
-        //se reproduit ou mange
-        if(this.energie >= 50 && this.pos.habitant.size()>1){
-            pos.loft.ajouter_neuneu(this.reproduction(this.pos.autre_neuneu(this)));
-        }else if(randomDir.hasAliment(this)){
+      //se reproduit ou mange
+        if(this.energie >= min_en_prod && this.pos.habitant.size()>1){
+        	
+        	Neuneus n= reproduction(this.pos.autre_neuneu(this));
+        	System.out.println("reproduction des neuneu");
+            pos.loft.ajout_neuneu(n);
+            
+        }else if(c.test_aliment(this)){
             this.manger();
         }
-		
-		
 	}
-	
 }

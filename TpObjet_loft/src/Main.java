@@ -7,7 +7,10 @@ public class Main {
 		
 		 Loft l=new Loft(4,4);
 		 l.affiche();
-		 
+		 for (int i=0;i<4;i++){			
+				l.tour_de_jeu();
+				
+		 }
 			 
 	}
 
