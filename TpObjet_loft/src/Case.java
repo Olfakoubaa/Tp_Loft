@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class Case {
 	int abs;
 	int ord;
@@ -125,15 +126,7 @@ public class Case {
 		return test;
 	}
 	
-	//donner la case la plus proche contient la nourriture du neuneu en cours _pour les 
-	
-	public Case proche(Neuneus n){
-		Case c=null;
-		return c;
-	}
-	
-	//donner le si la case contien un neuneu de mme type
-
+	//donner l'autre neuneu si il existe dans la case
 	 public Neuneus autre_neuneu (Neuneus n){
 	        Neuneus n2 = null;
 	        int i=0;
@@ -146,32 +139,62 @@ public class Case {
 	        return n2;
 	    }
 	
-	/***/ 
-	/* public Case proche_nourriture(Neuneus neuneu){
-	        HashMap<Case, Integer> possible = new HashMap<Case, Integer>();
-	        for(Case aCase : this.loft.getMap()){
-	            if(aCase.hasAliment(neuneu)){
-	                possible.put(aCase, Math.abs(aCase.abs - this.abs) + Math.abs(aCase.ord - this.ord));
+
+	 public Case _nourriture(Neuneus neuneu){
+	       
+	        ArrayList <Case> position=new ArrayList<Case>();
+	        ArrayList <Integer> distance=new ArrayList<Integer>();
+		 	
+	        //calculer les distances a toutes les case qui contiennet la nourriture du neuneu en cour
+	        for (int i=0;i<this.loft.cases.size();i++){
+	        	Case c=this.loft.cases.get(i);
+	        		if(c.test_aliment(neuneu)){
+	        			position.add(c);
+	        			distance.add(Math.abs(c.abs - this.abs) + Math.abs(c.ord - this.ord));
 	            }
 	        }
-	        Case ret = null;
-	        int distance=10000;
-	        for(Case aCase : possible.keySet()){
-	            if(possible.get(aCase)<distance){
-	                ret = aCase;
-	                distance = possible.get(aCase);
-	            }
+	        Case decision = null;
+	        int min =distance.get(0);
+	        //recherche min 
+	        for (int i=0;i<position.size();i++){
+	        	int d= distance.get(i);
+	        	if(d<min){
+	        		min=d;
+	        		decision= position.get(i);
+	        	}
 	        }
-	        return ret;
-	    }*/
-	 /****/
+	        return decision ;
+	    }
 	 
 	 
 	//donner la case la plus proche qui contient un neuneu
 	 
-	 
-	 
-	 
+	 public Case _neuneu(Neuneus neuneu){
+	    
+	        ArrayList <Case> position=new ArrayList<Case>();
+	        ArrayList <Integer> distance=new ArrayList<Integer>();
+	        
+		 	//calculer les distances a toutes les case qui contiennet un neuneu de type different
+	        for (int i=0;i<this.loft.cases.size();i++){
+	        	Case c=this.loft.cases.get(i);
+	        		//si la case contient un autre neuneu 
+	        		if(autre_neuneu(neuneu)!= null){
+	        			position.add(c);
+	        			distance.add(Math.abs(c.abs - this.abs) + Math.abs(c.ord - this.ord));
+	            }
+	        }
+	        Case decision = null;
+	        int min =distance.get(0);
+	        //recherche min 
+	        for (int i=0;i<position.size();i++){
+	        	int d= distance.get(i);
+	        	if(d<min){
+	        		min=d;
+	        		decision= position.get(i);
+	        	}
+	        }
+	        return decision ;
+	    }
 	 
 }
 

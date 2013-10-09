@@ -38,7 +38,7 @@ public class Erratique extends Neuneus{
         if (this.pos.case_bas()!= null){
             directions.add(this.pos.case_bas());
         }
-        //choix d'une direction aléatoire
+        //choix d'une case aléatoireparmis les directions qu'on a trouvé
         Random rd=new Random();
         Case c = directions.get(rd.nextInt(directions.size()));
        
@@ -48,41 +48,18 @@ public class Erratique extends Neuneus{
         this.pos = c;
         //deplacer le neuneu
         c.habitant.add(this);
+               
+        //si'il ya un neuneu => reproduction et l'energie le permet
         
-        //se reproduire ou manger
-        
-        //si'il ya un neuneu de meme type=> reproduction
-        int k=this.pos.habitant.size();
-        if((this.energie >= min_en_prod)&&(k>1))   {	
+        if((this.energie >= min_en_prod)&&(this.pos.habitant.size()>1))   {	
         	Neuneus n= reproduction(this.pos.autre_neuneu(this));
             pos.loft.ajout_neuneu(n);
         }
-        
         //si la case contient les aliments préférés par el neuenu
         else if(c.test_aliment(this)){
             this.manger();
         }  
 	}
-
-	@Override
-	void manger() {
-		// TODO Auto-generated method stub
-		int i=0;
-		//while (i<this.pos.stock.size()){
-			if (this.liste_nou.indexOf(this.pos.stock.get(i))!=0){
-				energie+=this.pos.stock.get(i).val_energitique;
-				this.pos.stock.remove(i);
-		}	
-				else i++;
-		//}
-	}
-	@Override
 	
-	Neuneus reproduction(Neuneus n) {
-		this.energie-=40;
-		n.energie-=40;
-		Neuneus neu=new Erratique("Erratique",0,this.pos);
-		return neu;
-	}
 	
 }

@@ -5,7 +5,7 @@ import java.util.Random;
 public class Loft {
 	
 		//h et w : nombres de cases à la verticale et l'horisontale
-		int h,w;
+		public static int h,w;
 		
 		//le loft est un ensemble de cases
 		ArrayList <Case> cases= new ArrayList <Case>();

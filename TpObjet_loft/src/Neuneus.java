@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Neuneus {
 	
@@ -17,8 +18,25 @@ public void affiche(){
 		
 	}
 	abstract void se_deplacer();
-	abstract void manger();
-	abstract Neuneus reproduction(Neuneus n);
+	
+	public void manger(){
+			int i=0;
+			//while (i<this.pos.stock.size()){
+				if (this.liste_nou.indexOf(this.pos.stock.get(i))!=0){
+					energie+=this.pos.stock.get(i).val_energitique;
+					this.pos.stock.remove(i);
+			}	
+					else i++;
+			//}
+		
+	}
+	
+	public Neuneus reproduction(Neuneus n){
+		this.energie-=40;
+		n.energie-=40;
+		Neuneus neu=new Erratique("Erratique",0,this.pos);
+		return neu;
+	}
 	
 	
 	//constructeurs pour les neuneus qui seront placés aléatoirement
@@ -46,11 +64,12 @@ public void affiche(){
 		return ch;
 	}
 	
-	/*
+	
 	
 	public Case deplacement(Case c, int x, int y){
 		
-			//on prend d'abord toutes les directions acceccibles
+			Case _c=null;
+			//on prend  toutes les directions acceccibles
 			ArrayList<Case> directions = new ArrayList<Case>();
 	      
 	        if ((this.pos.case_gauche() != null && x<0) ||
@@ -69,8 +88,14 @@ public void affiche(){
 	                (c==null && this.pos.case_bas() != null)){
 	            directions.add(this.pos.case_bas());
 	        }
-	        return (directions.size()==0? null : directions.get((int)(Math.random() * directions.size())));
+	        
+	        Random rd =new Random ();
+	        if (directions.size()!=0){
+	        	int alea=rd.nextInt(directions.size());
+	        	_c=directions.get(alea);
+	        }
+	        return _c;
 	    }
 		 
-	*/
+	
 }
